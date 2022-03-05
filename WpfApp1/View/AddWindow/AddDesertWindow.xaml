@@ -1,0 +1,81 @@
+﻿<Window x:Class="WpfApp1.View.AddWindow.AddDesertWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Добавить новый десерт кафе MARILYN" Height="750" Width="600"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModel="clr-namespace:WpfApp1.ViewModel"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Name="AddDesertWin">
+    <Window.DataContext>
+        <viewModel:DataManage/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/AddWindow/Фон.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBox
+            Grid.Row="0"
+                 x:Name="LoginBox"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 materialDesign:HintAssist.Hint="Название десерта"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                 Text="{Binding DessertName}"
+                 Height="50"
+                 Width="332" Cursor="IBeam" Background="White" BorderBrush="Black" FontFamily="Century Gothic"/>
+
+        <ComboBox Grid.Row="1"
+                  HorizontalAlignment="Center"
+                  Height="50"
+                  Width="332"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  materialDesign:HintAssist.Hint="Вес десерта (граммы)"
+                  x:Name="DeliveryType"
+                  Text="{Binding DessertWeight}"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}" FontFamily="Century Gothic" Background="White" BorderBrush="Black">
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">80</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">90</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">100</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">140</TextBlock>
+        </ComboBox>
+
+        <TextBox
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            materialDesign:HintAssist.Hint="Цена дессерта"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+            Text="{Binding DessertPrice}"
+            Height="50"
+            Width="332" Cursor="IBeam" FontFamily="Century Gothic" Background="White" BorderBrush="Black" CaretBrush="Black"/>
+
+        <Button Grid.Row="3"
+                Content="Добавить"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" 
+                Width="220" Height="50"
+                CommandParameter="{Binding ElementName=AddDesertWin}"
+                Command="{Binding AddNewDesert}"
+                Style="{DynamicResource MaterialDesignOutlinedButton}" Cursor="Hand" FontWeight="Bold" FontFamily="Century Gothic" FontSize="22" Foreground="White" Background="#FFB80808"/>
+    </Grid>
+</Window>

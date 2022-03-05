@@ -1,0 +1,83 @@
+﻿<Window x:Class="WpfApp1.View.AddWindow.AddDrinkWindow"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Добавить новый горячий напиток кафе MARILYN" Height="750" Width="600"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModel="clr-namespace:WpfApp1.ViewModel"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Name="AdddDrinkWin">
+    <Window.DataContext>
+        <viewModel:DataManage/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.Background>
+            <ImageBrush ImageSource="/View/AddWindow/Фон.jpg"/>
+        </Grid.Background>
+        <Grid.RowDefinitions>
+
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="*"/>
+
+        </Grid.RowDefinitions>
+
+        <TextBox
+            Grid.Row="0"
+                 x:Name="LoginBox"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center"
+                 materialDesign:HintAssist.Hint="Название напитка"
+                 Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+                 Text="{Binding DrinkName}"
+                 Height="50"
+                 Width="332" Cursor="IBeam" FontFamily="Century Gothic" BorderBrush="Black" Background="White"/>
+
+        <ComboBox Grid.Row="1"
+                  HorizontalAlignment="Center"
+                  Height="50"
+                  Width="332"
+                  materialDesign:ComboBoxAssist.ShowSelectedItem="True"
+                  materialDesign:HintAssist.Hint="Размер напитка"
+                  x:Name="DeliveryType"
+                  Text="{Binding DrinkSize}"
+                  Style="{StaticResource MaterialDesignOutlinedComboBox}" FontFamily="Century Gothic" Background="White" BorderBrush="Black">
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">XS (30 мл)</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">S (60 мл)</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">М (120 мл)</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">L (300 мл)</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">XL (400 мл)</TextBlock>
+            <TextBlock Style="{StaticResource MaterialDesignSubtitle1TextBlock}">XXL (450 мл)</TextBlock>
+        </ComboBox>
+
+        <TextBox
+            Grid.Row="2"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center"
+            materialDesign:HintAssist.Hint="Цена напитка"
+            Style="{StaticResource MaterialDesignOutlinedTextBox}" 
+            Text="{Binding DrinkPrice}"
+            Height="50"
+            Width="332" Cursor="IBeam" FontFamily="Century Gothic" BorderBrush="Black" Background="White"/>
+
+        <Button Grid.Row="3"
+                Content="Добавить"
+                VerticalAlignment="Center"
+                HorizontalAlignment="Center" 
+                Width="220" Height="50"
+                CommandParameter="{Binding ElementName=AdddDrinkWin}"
+                Command="{Binding AddNewDrink}"
+                Style="{DynamicResource MaterialDesignOutlinedButton}" Cursor="Hand" Background="#FFB80808" FontFamily="Century Gothic" FontSize="22" FontWeight="Bold" BorderBrush="Black" Foreground="White"/>
+    </Grid>
+</Window>

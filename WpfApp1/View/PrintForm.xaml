@@ -1,0 +1,61 @@
+﻿<Window x:Class="WpfApp1.View.PrintForm"
+               xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="Чек кафе MARILYN" Height="500" Width="400"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewModel="clr-namespace:WpfApp1.ViewModel"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen"
+        Name="qqq">
+    <Window.DataContext>
+        <viewModel:DataManage/>
+    </Window.DataContext>
+    <Grid Name="Print" Width="400" Height="450">
+
+        <TextBlock Text="Кафе MARILYN" HorizontalAlignment="Center"/>
+        <TextBlock Text="г.Минск ул.Карла Маркса, 3" HorizontalAlignment="Center" Margin="0 15 0 0"/>
+        <StackPanel Margin="10,32,10,10">
+
+            <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+                <TextBlock Text="Дата заказа:"/>
+                <TextBlock x:Name="Date"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+                <TextBlock Text="Время заказа:"/>
+                <TextBlock x:Name="Time"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+                <TextBlock Text="Бариста: "/>
+                <TextBlock x:Name="BaristaName"/>
+            </StackPanel>
+
+            <StackPanel Orientation="Horizontal" Margin="10 10 10 0">
+                <TextBlock Text="Товары: "/>
+                <ListBox x:Name="Products"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" Margin="20 20 20 40" Orientation="Horizontal">
+            <TextBlock Text="Цена: "/>
+            <TextBlock Name="Price"/>
+        </StackPanel>
+
+        <StackPanel VerticalAlignment="Bottom" Margin="20 20 20 20" Orientation="Horizontal">
+            <TextBlock Text="Номер чека: "/>
+            <TextBlock Name="Numer"/>
+        </StackPanel>
+
+    </Grid>
+</Window>
